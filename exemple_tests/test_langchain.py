@@ -4,6 +4,10 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline, AutoModelForSeq2SeqLM
 from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 
+
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = ''
+
+
 model_id_1 = 'google/flan-t5-large'
 tokenizer_1 = AutoTokenizer.from_pretrained(model_id_1)
 model_1 = AutoModelForSeq2SeqLM.from_pretrained(model_id_1, load_in_8bit=False)
