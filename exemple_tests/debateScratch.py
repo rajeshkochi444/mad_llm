@@ -58,7 +58,7 @@ while nbRounds < 3:
     answers2.append(chain12.invoke({"question" : question}))
     continue
   
-  answers1.append(chain12.invoke({
+  answers1.append(chain21.invoke({
       "question" : question,
       "other_answer" : answers2[-1],
       "previous_answer" : answers1[-1]
