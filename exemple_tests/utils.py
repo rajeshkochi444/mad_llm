@@ -38,3 +38,24 @@ def printDebate(responses):
         print(f"\n ---- Round {c + 1} ---- ")
         for i in responses:
             print(f"Agent {i} : {responses[i][c]}\n")
+            
+            
+def save_sample(responses, summarizerChain, name):
+    """_summary_
+
+    Args:
+        responses (_type_): _description_
+        summarizer (_type_): _description_
+    """
+    
+    text = ""
+    for c in range(len(responses[0])):
+        text += f"\n ---- Round {c + 1} ---- \n"
+        for i in responses:
+            text += f"Agent {i} : {responses[i][c]}\n"
+            
+    text += "\n ----- Output ------\n"
+    text += summarizerChain.predict(final_answers = "\n".join([f"Agent {i} : {responses[i][-1]}" for i in responses]))
+    
+    with open(f"./samples/{name}.txt", "w") as file:
+        file.write(text)

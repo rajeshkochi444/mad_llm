@@ -3,7 +3,7 @@ from langchain.memory import ConversationBufferWindowMemory, ConversationBufferM
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import HuggingFaceHub, VLLM
 from langchain_openai import OpenAI
-from utils import getOpponentResponses, printDebate
+from utils import getOpponentResponses, printDebate, save_sample
 import random
 import os
 
@@ -23,8 +23,8 @@ AGENT_IDS = [
     #'mosaicml/mpt-7b', too big
     'openai',
     'openai',
-    'openai',
-    #'google/flan-t5-large',
+    #'openai',
+    'google/flan-t5-large',
     # continu here
 ]
 
@@ -49,7 +49,7 @@ for id in AGENT_IDS:
         )
     )
     
-    #a lot of dependencie issues but would be much better
+    #a lot of dependencie issues but would be much much better
     # agents.append(
     #     VLLM(
     #         model=id,
@@ -103,7 +103,7 @@ prompt_2 = PromptTemplate(template=template_2, input_variables=["chat_history", 
 
 # summurising template 
 stemplate = """
-You are a judge in a debate and you want to summurize the overall idea given by all the parties based on their final answers.
+Using the different answers from a debate between agents, give the consensus reached.
 ------------
 final_answers : {final_answers}
 ------------
@@ -137,9 +137,15 @@ for i, agent in enumerate(agents):
                     memory=memories[i]
                 )
     
+schain = LLMChain(
+            llm=summurizer,
+            prompt=spromt,
+            verbose=True
+        )
+
 
 # the question has to be automated accorifn to a specific dataset
-question = "what is two plus two ?"
+question = "what is two plus two minus one?"
 nbRounds = 2
 responses = {} # key : index of the agents | values : list of answers
 for c in range(nbRounds):
@@ -157,16 +163,11 @@ for c in range(nbRounds):
                 agent_answer=getOpponentResponses(querying_agent_index = i, responses = responses)
             )
         )
-
-schain = LLMChain(
-            llm=summurizer,
-            prompt=spromt,
-            verbose=True
-        )
   
  # visualization
-printDebate(responses)
+# printDebate(responses)
+# print(" \n ---- summarized output ---- \n")
+# print(schain.predict(final_answers = "\n".join([f"Agent {i} : {responses[i][-1]}" for i in responses])))
 
-print(schain.predict(final_answers = [responses[i][-1] for i in responses].join()))
 # save the answers : 
-# ...
+save_sample(responses, schain, name="debate_v11")
