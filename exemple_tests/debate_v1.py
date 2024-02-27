@@ -1,11 +1,13 @@
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferWindowMemory, ConversationBufferMemory, ConversationSummaryBufferMemory
 from langchain.prompts import PromptTemplate
-from langchain_community.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceHub, VLLM
 from langchain_openai import OpenAI
 from utils import getOpponentResponses, printDebate
+import random
 import os
 
+random.seed(42)
 
 # ------ API KEYS MANAGEMENTS ------- #
 # don't forget to write your key bellow
@@ -18,17 +20,20 @@ os.environ['OPENAI_API_KEY'] = 'sk-uDkh53EbqDYmzCIjOFZzT3BlbkFJC5qUKpW1WCZzUwWg3
 
 AGENT_IDS = [
     #'google/gemma-7b-it',
+    #'mosaicml/mpt-7b', too big
+    'openai',
     'openai',
     'openai',
     #'google/flan-t5-large',
     # continu here
 ]
 
+summurizer = OpenAI()
 agents = []
 for id in AGENT_IDS:
     
     if id == 'openai':
-        agents.append(OpenAI())
+        agents.append(OpenAI(temperature=random.random()))
         continue
 
     agents.append(
@@ -43,6 +48,18 @@ for id in AGENT_IDS:
             },
         )
     )
+    
+    #a lot of dependencie issues but would be much better
+    # agents.append(
+    #     VLLM(
+    #         model=id,
+    #         trust_remote_code=True,  # mandatory for hf models
+    #         max_new_tokens=128,
+    #         top_k=10,
+    #         top_p=0.95,
+    #         temperature=0.8,
+    #     )
+    # )
 
 
 
@@ -50,9 +67,7 @@ for id in AGENT_IDS:
 
 # first round template
 template_1 = """
-Youre are in the first round of a debate and you have to give your point of view about the question.
-Since you are a professional, you answers are consice and well argumented.
-A professional does not give unneccessary points for the debate.
+You are in a debate on a question. provide your structured answer.
 ---------
 question : {question}
 ---------
@@ -65,9 +80,9 @@ prompt_1 = PromptTemplate(template=template_1, input_variables=["question"])
 
 # middle rounds debate template
 template_2 = """
-You are in a debate with a human and you are trying to reach a consencus.
-Answer the question based of your previous answer (delimited by <hs></hs>) and use opponent human answer (delimited by <ctx></ctx>) to update
-if necessary your previous answer to the question.
+You are in a debate with agents and the goal is to reach a consensus.
+Using your previous answer (delimited by <hs></hs>) and opponents answers (delimited by <ctx></ctx>) as additionnal advices,
+can you give an updated response.
 --------
 <hs>
 {chat_history}
@@ -86,10 +101,20 @@ prompt_2 = PromptTemplate(template=template_2, input_variables=["chat_history", 
 # last round template
 # TODO
 
+# summurising template 
+stemplate = """
+You are a judge in a debate and you want to summurize the overall idea given by all the parties based on their final answers.
+------------
+final_answers : {final_answers}
+------------
+"""
+spromt = PromptTemplate(template=stemplate, input_variables=["final_answers"])
+
+
 # memories 
 memories = []
 for agent in agents:
-    memories.append(ConversationBufferWindowMemory(memory_key="chat_history", k=3))
+    memories.append(ConversationBufferWindowMemory(memory_key="chat_history", k=5))
 
 # ------  DEBATE ------- #
 
@@ -133,9 +158,15 @@ for c in range(nbRounds):
             )
         )
 
+schain = LLMChain(
+            llm=summurizer,
+            prompt=spromt,
+            verbose=True
+        )
   
  # visualization
 printDebate(responses)
-   
+
+print(schain.predict(final_answers = [responses[i][-1] for i in responses].join()))
 # save the answers : 
 # ...
