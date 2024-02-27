@@ -40,7 +40,7 @@ def printDebate(responses):
             print(f"Agent {i} : {responses[i][c]}\n")
             
             
-def save_sample(responses, summarizerChain, name):
+def save_sample(responses, summarizerChain, name, agent_ids):
     """_summary_
 
     Args:
@@ -48,7 +48,13 @@ def save_sample(responses, summarizerChain, name):
         summarizer (_type_): _description_
     """
     
+    #TODO : number of round before conseus if so.
     text = ""
+    text += "----- Models -----\n"
+    for i, repo_id in enumerate(agent_ids):
+        text += f"• Agent {i} : {repo_id}\n"
+    
+    text += " \n -------- FULL DEBATE -------- \n"
     for c in range(len(responses[0])):
         text += f"\n ---- Round {c + 1} ---- \n"
         for i in responses:

@@ -145,7 +145,7 @@ schain = LLMChain(
 
 
 # the question has to be automated accorifn to a specific dataset
-question = "what is two plus two minus one?"
+question = "what's better between online course and physical class?"
 nbRounds = 2
 responses = {} # key : index of the agents | values : list of answers
 for c in range(nbRounds):
@@ -170,4 +170,4 @@ for c in range(nbRounds):
 # print(schain.predict(final_answers = "\n".join([f"Agent {i} : {responses[i][-1]}" for i in responses])))
 
 # save the answers : 
-save_sample(responses, schain, name="debate_v11")
+save_sample(responses=responses, summarizerChain=schain, name="debate_v11", agent_ids=AGENT_IDS)
