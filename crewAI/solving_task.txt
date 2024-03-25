@@ -1,0 +1,1 @@
+Correcting the mistake in the student's solution, the original number of students in the school before the new students joined is 200.
