@@ -8,10 +8,7 @@ Society of Minds (SoM-MAD): This strategy leverages the collective intelligence 
 
 Multi-Persona: This approach employs multiple AI personas, each designed to argue from a different stance or viewpoint, enriching the discourse and diversity of thought.
 
-The research assesses the adaptability and applicability of MAD in various domains, including:
-Mathematics
-Medicine
-Science questions
+The research assesses the adaptability and applicability of MAD in various domains, including:Mathematics, Medicine, Science.
 
 The goal is to explore how MAD, through strategies like SoM-MAD and Multi-Persona, can improve reasoning tasks, providing nuanced, balanced, and comprehensive outputs.
 
