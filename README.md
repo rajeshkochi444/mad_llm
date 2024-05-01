@@ -1,5 +1,23 @@
 # mad_llm
-Multi-Agent Debate LLM
+
+This repository contains research on the Multi-agent Debate (MAD) approach, designed to enhance AI capabilities through structured arguments among multiple AI agents. The study focuses on the effectiveness of MAD strategies across diverse question-answering scenarios.
+
+The research explores two distinct strategies within the MAD framework:
+
+Society of Minds (SoM-MAD): This strategy leverages the collective intelligence of multiple AI agents, each contributing a unique perspective to the debate.
+Multi-Persona: This approach employs multiple AI personas, each designed to argue from a different stance or viewpoint, enriching the discourse and diversity of thought.
+
+The research assesses the adaptability and applicability of MAD in various domains, including:
+Mathematics
+Medicine
+Science questions
+
+Objectives
+The goal is to explore how MAD, through strategies like SoM-MAD and Multi-Persona, can improve reasoning tasks, providing nuanced, balanced, and comprehensive outputs.
+
+Contributions
+This project offers insights into the potential enhancements that structured AI debates can bring to question-answering systems, aiming to foster more sophisticated and reliable AI decision-making processes.
+
 ![image](https://github.com/rajeshkochi444/mad_llm/assets/40799655/4747bfbd-7a06-4aad-b6d2-98fb0f740973)
 
 ## Prerequisites
