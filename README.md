@@ -5,6 +5,7 @@ This repository contains research on the Multi-agent Debate (MAD) approach, desi
 The research explores two distinct strategies within the MAD framework:
 
 Society of Minds (SoM-MAD): This strategy leverages the collective intelligence of multiple AI agents, each contributing a unique perspective to the debate.
+
 Multi-Persona: This approach employs multiple AI personas, each designed to argue from a different stance or viewpoint, enriching the discourse and diversity of thought.
 
 The research assesses the adaptability and applicability of MAD in various domains, including:
