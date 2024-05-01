@@ -2,13 +2,13 @@
 
 This repository contains research on the Multi-agent Debate (MAD) approach, designed to enhance AI capabilities through structured arguments among multiple AI agents employing CrewAI, a framework for orchestrating role-playing, autonomous AI agents.. 
 
-The research explores two distinct strategies within the MAD framework and the effectiveness of these MAD strategies across diverse question-answering scenarios.
+The research explores two distinct strategies within the MAD framework.
 
 Society of Minds (SoM-MAD): This strategy leverages the collective intelligence of multiple AI agents, each contributing a unique perspective to the debate.
 
 Multi-Persona: This approach employs multiple AI personas, each designed to argue from a different stance or viewpoint, enriching the discourse and diversity of thought.
 
-The research assesses the adaptability and applicability of MAD in various domains, including:Mathematics, Medicine, Science.
+The research assesses the adaptability and applicability of these MAD MAD strategies across diverse question-answering scenarios in various domains.
 
 The goal is to explore how MAD, through strategies like SoM-MAD and Multi-Persona, can improve reasoning tasks, providing nuanced, balanced, and comprehensive outputs.
 
@@ -79,5 +79,12 @@ Follow these steps to set up your development environment:
 
    Execute the script with the following command: python final_gpt_answer_extraction_original.py
 
+## Contributors
+
+Rajesh Raju
+
+Venkata Kothapalli
+
+Giovanni Belva
 
    
