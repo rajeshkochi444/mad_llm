@@ -1,8 +1,8 @@
-# mad_llm
+# Better Language Reasoning Through Multi-Agent Debate
 
-This repository contains research on the Multi-agent Debate (MAD) approach, designed to enhance AI capabilities through structured arguments among multiple AI agents. The study focuses on the effectiveness of MAD strategies across diverse question-answering scenarios.
+This repository contains research on the Multi-agent Debate (MAD) approach, designed to enhance AI capabilities through structured arguments among multiple AI agents employing CrewAI, a framework for orchestrating role-playing, autonomous AI agents.. 
 
-The research explores two distinct strategies within the MAD framework:
+The research explores two distinct strategies within the MAD framework and the effectiveness of these MAD strategies across diverse question-answering scenarios.
 
 Society of Minds (SoM-MAD): This strategy leverages the collective intelligence of multiple AI agents, each contributing a unique perspective to the debate.
 
