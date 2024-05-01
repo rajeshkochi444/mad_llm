@@ -12,10 +12,8 @@ Mathematics
 Medicine
 Science questions
 
-Objectives
 The goal is to explore how MAD, through strategies like SoM-MAD and Multi-Persona, can improve reasoning tasks, providing nuanced, balanced, and comprehensive outputs.
 
-Contributions
 This project offers insights into the potential enhancements that structured AI debates can bring to question-answering systems, aiming to foster more sophisticated and reliable AI decision-making processes.
 
 ![image](https://github.com/rajeshkochi444/mad_llm/assets/40799655/4747bfbd-7a06-4aad-b6d2-98fb0f740973)
