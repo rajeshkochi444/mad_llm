@@ -1,5 +1,6 @@
 # mad_llm
 Multi-Agent Debate LLM
+![image](https://github.com/rajeshkochi444/mad_llm/assets/40799655/4747bfbd-7a06-4aad-b6d2-98fb0f740973)
 
 ## Prerequisites
 
