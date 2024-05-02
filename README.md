@@ -25,7 +25,7 @@ Before you begin, ensure you have met the following requirements:
 
 Follow these steps to set up your development environment:
 
-1. **Clone the Repository**
+### 1. **Clone the Repository**
 
    Clone this repository to your local machine using the following command:
    
