@@ -39,19 +39,19 @@ Follow these steps to set up your development environment:
    
    source myenv/bin/activate
 
-3. Install Required Packages
+3. **Install Required Packages**
    
    pip install -r requirements.txt
 
-4. Navigate to the SoM-MAD or MP-MAD project directory
+4. **Navigate to the SoM-MAD or MP-MAD project directory**
 
    cd SoM-MAD
 
-5. SoM-MAD and MP-MAD supports three different datasets. Choose one to work with by navigating into the corresponding directory
+5. **SoM-MAD and MP-MAD supports three different datasets. Choose one to work with by navigating into the corresponding directory**
 
    cd Math_QA (or MedMCQA/SciQ)
 
-6. Configuring the Language Models
+6. **Configuring the Language Models**
    
    You need to configure your chosen language model and API keys in the main.py
 
@@ -59,7 +59,7 @@ Follow these steps to set up your development environment:
 
    Specify your LLM and API_KEY or opt for VLLM and HuggingFaceEndpoint configurations for deploying the models.
 
-7. Run the code 
+7. **Run the code** 
 
    python main.py
 
@@ -67,11 +67,11 @@ Follow these steps to set up your development environment:
 
    Adjust any paths or parameters as needed based on your specific setup or HPC requirements. This structured approach helps users navigate the setup process easily and effectively.
 
-8. Completion Notification
+8. **Completion Notification**
    
    Upon successful execution, main.py will generate files named result_round_{i}_before_science_analysis.csv for i ranging from 0 to 3
 
-9. Final Answer Extraction
+9. **Final Answer Extraction**
 
    To extract the final answers for the Math_QA datasets, or to determine the correct labels for SciQ and MedMCQA datasets, you will need to use the final answer extractor powered by GPT-3.5-Turbo.
 
